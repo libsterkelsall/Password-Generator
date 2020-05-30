@@ -27,7 +27,7 @@ var selectSpecCharac
 
 //for password
 var generatedResultArray = []
-var password
+var password = ""
 
 //java stuff
 var generateBtn = document.querySelector("#generate");
@@ -43,29 +43,28 @@ generateBtn.addEventListener("click", writePassword);
 
 // Iniate generation and then write password to the #password input
 function writePassword() {
-  var buildarray = selector();
+  var selectedArray = selector();
   var password = generatePassword();
-  var passwordText,value = password;
-  document.getElementById("#password").value = passwordText;
-
+  var passwordText = document.querySelector("#password");
+  passwordText.value = password;
 
 }
 
 //Generate array for password of selected length from selected character types 
 function generatePassword() {
   {
-    for (var i = 1; i <= selectLength; i++) {
+        for (var i = 1; i <= selectLength; i++) {
       var chosen =
         selectedArray[Math.floor(Math.random() * (selectedArray.length))];
       generatedResultArray.push(chosen);
       console.log(generatedResultArray);
     }
   }
-  for (var i = 0; i <= generatedResultArray.length; i++) {
-    var password = 
-    (generatedResultArray[i]);
-    console.log(password)
-  }
+  for (var i = 0; i < generatedResultArray.length; i++) {
+    password = password + (generatedResultArray[i]);
+    console.log(password);
+    }
+    return password;
 }
 
 //-----------------------------------------------------------------------------------------------------
@@ -133,6 +132,7 @@ function selector() {
       selectedArray.push(...specCharacArray);
       console.log(selectedArray);
     }
+    return selectedArray
   }
 
 }
